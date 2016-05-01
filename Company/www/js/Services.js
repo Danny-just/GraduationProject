@@ -100,7 +100,7 @@ angular.module('Company.Services',[])
       var passWord;
       userName=encodeURI(encodeURI(mod.userName));
       passWord=encodeURI(encodeURI(mod.passWord));
-      return $http.jsonp("http://192.168.0.5:8080/Huang/User/loginToAction?userName="+userName+"&passWord="+passWord
+      return $http.jsonp("http://127.0.0.1:8080/Huang/User/loginToAction?userName="+userName+"&passWord="+passWord
         +"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           this.data=data;
