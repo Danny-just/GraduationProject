@@ -87,15 +87,22 @@ angular.module('Company.Controllers',['Company.Services'])
       });
     }
   }])
-  .controller("MeController",['$scope',function($scope){
+  .controller("MeController",['$scope','$window',function($scope,$window){
     $scope.title="我";
+    /*if($window.localStorage.getItem('name')!=undefined){
+      $scope.mod.User=$window.localStorage.getItem('name');
+    }*/
+    $scope.User=$window.localStorage.getItem('name');
   }])
-  .controller("LoginController",['$scope','LoginService',function($scope,LoginService){
+  .controller("LoginController",['$scope','LoginService','$window',function($scope,LoginService,$window){
     $scope.title="Login";
     $scope.login=function(){
       LoginService.login($scope.mod).then(function (res){
-        $scope.loginOk=res.data;
-        console.log($scope.loginOk);
+        $scope.state=res.data.state;
+        if($scope.state==200){
+          $window.localStorage.setItem('state','200');
+        }
+        console.log($scope.state);
       });
     }
   }])

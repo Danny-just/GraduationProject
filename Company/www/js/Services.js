@@ -86,9 +86,15 @@ angular.module('Company.Services',[])
         });
     }
   }])
-  .service('LoginService',['$http','$q',function($http,$q){
+  .service('LoginService',['$http','$q','$window',function($http,$q,$window){
     this.data={};
     this.login=function(mod){
+      if(mod.saveUser){
+        $window.localStorage.clear();
+        $window.localStorage.setItem('name',mod.userName);
+        $window.localStorage.setItem('passWord',mod.passWord);
+      }
+      console.log($window.localStorage.getItem('name'));
       var deferred = $q.defer();
       var userName;
       var passWord;
