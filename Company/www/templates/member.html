@@ -1,0 +1,15 @@
+<ion-view view-title="{{title}}" >
+  <ion-content class="padding" ng-controller="MemberController">
+    <a class="button" href="#/templates/memberPost">插入会员</a>
+    <ion-list>
+      <ion-item class="item-thumbnail"  collection-repeat="member in members" ng-click="getDetail(member)">
+        <!--<img ng-if="topic.pic" ng-src="{{ENV.imgUrl}}{{topic.pic}}">
+        <img ng-if="!topic.pic" ng-src="img/ionic.png">-->
+        <h2>{{member.memberName}}</h2>
+        <!--<p class="summary"></p>-->
+        <ion-option-button class="button-assertive icon ion-android-share"ng-click="confirmDelete(member.id)">删除</ion-option-button>
+        <ion-option-button class="button-assertive icon ion-cube">修改</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

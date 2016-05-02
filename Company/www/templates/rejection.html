@@ -1,0 +1,45 @@
+<ion-view view-title="销售记录" >
+  <ion-content class="padding" ng-controller="RejectionController">
+   <!-- <br />
+    <br />
+    <label class="item item-input">
+      <span class="input-label">商品名</span>
+      <input type="text" ng-model="histories.goodsName">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">商品单价</span>
+      <input type="text"  ng-model="histories.goodsPrice">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">销售数量</span>
+      <input type="text"  ng-model="histories.salesNumber">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">会员名</span>
+      <input type="text"  ng-model="histories.goodsPrice">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">折扣</span>
+      <input type="text"  ng-model="histories.discount">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">总计</span>
+      <input type="text"  ng-model="histories.sum">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">上次更新时间</span>
+      <input type="text"  ng-model="histories.dateTime">
+    </label>
+    <br />-->
+    <ion-list>
+      <ion-item class="item-thumbnail"  collection-repeat="rejection in goodsRejections">
+        <!--<img ng-if="topic.pic" ng-src="{{ENV.imgUrl}}{{topic.pic}}">
+        <img ng-if="!topic.pic" ng-src="img/ionic.png">-->
+        <!--<h2><a class="text">{{goods.id+"   "}}</a>{{goods.goodsName+"|"+goods.userName+"|"+goods.goodsNumber+"|"+goods.dateTime
+          +"|"+goods.goodsPrice+"|"+goods.goodsStock+"|"+goods.goodsCompanies}}</h2>-->
+        <a class="h2">{{rejection.goodsName}}</a>
+        <!--<p class="summary"></p>-->
+
+
+  </ion-content>
+</ion-view>

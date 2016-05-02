@@ -1,0 +1,62 @@
+<ion-view view-title="{{title}}" >
+  <ion-content class="padding" ng-controller="InController">
+
+    <a class="button" ng-click="scanBarcode()"> ScanBarcode</a>
+    <br/>
+   <!--
+    <li ng-repeat="x in name">
+      {{ x.company + ', ' + x.id +','+x.number+','+x.goods+','+x.price}}
+    </li>
+ -->
+    <br/>
+    <form class="fromSales" name="MyForm">
+    <label class="item item-input">
+      <span class="input-label">条码号</span>
+      <input type="number" required ng-minlength="5" ng-maxlength="10" ng-model="sales.goodsNumber" placeholder="请输入条码号" name="goodsNumber">
+      <span class="icon ion-checkmark" ng-show="MyForm.goodsNumber.$dirty && MyForm.goodsNumber.$valid"></span>
+
+      <!--<span class="icon ion-home"></span>-->
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">商品名</span>
+
+      <input type="text" ng-model="sales.goodsName" placeholder="请输入商品名" required name="goodsName">
+      <span  class="glyphicon glyphicon-ok" ng-show="MyForm.goodsName.$dirty&&MyForm.goodsName.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">单价</span>
+      <input type="number"  ng-model="sales.goodsPrice" placeholder="请输入商品单价" required name="goodsPrice">
+      <span class="icon ion-checkmark" ng-show="MyForm.goodsPrice.$dirty&&MyForm.goodsPrice.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">销售数量</span>
+      <input type="number" ng-model="sales.salesNumber" placeholder="请输入销售数量" required name="salesNumber">
+      <span class="icon ion-checkmark" ng-show="MyForm.salesNumber.$dirty&&MyForm.salesNumber.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">会员名</span>
+      <input type="text"  ng-model="sales.memberName" placeholder="请输入会员名" required name="memberName">
+      <span class="icon ion-checkmark" ng-show="MyForm.memberName.$dirty&&MyForm.memberName.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">会员编号</span>
+      <input type="number"  ng-model="sales.memberId" placeholder="请输入会员编号" ng-minlength="5" required name="memberId">
+      <span class="icon ion-checkmark" ng-show="MyForm.memberId.$dirty&&MyForm.memberId.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">会员折扣</span>
+      <input type="number"  ng-model="sales.discount" placeholder="请输入会员折扣" required name="discount">
+      <span class="icon ion-checkmark" ng-show="MyForm.discount.$dirty&&MyForm.discount.$valid"></span>
+
+    </label>
+    <label class="item item-input">
+      <span class="input-label">总计</span>
+      <input type="number"  ng-model="sales.sum" ng-mouseover="getSum()">
+    </label>
+    <br/>
+    <!--函数-->
+    <input class="btn btn-primary btn-lg" type="submit" ng-click="salesGoods()" ng-disabled="MyForm.$invalid"></input>
+    </form>
+  </ion-content>
+</ion-view>

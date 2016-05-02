@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <script src="lib/ionic/js/js/slidingTabsDirective.js"></script>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<ion-pane>
+  <ion-tabs class="tabs-striped tabs-icon-top tabs-positive">
+    <ion-tab title="销售" icon-on="ion-chevron-up" icon-off="ion-chevron-up" href="#/templates/compIn">
+      <ion-nav-view name="templates-compIn">
+    </ion-tab>
+    <ion-tab title="库存" icon-on="ion-chevron-down" icon-off="ion-chevron-down" href="#/templates/goods">
+      <ion-nav-view name="templates-goods">
+    </ion-tab>
+    <ion-tab title="我" icon-on="ion-person" icon-off="ion-person" href="#/templates/compMe">
+      <ion-nav-view name="templates-compMe">
+    </ion-tab>
+
+  </ion-tabs>
+  <!--
+  <ion-view>
+    <ion-content scroll="false">
+      <ion-slide-box slide-tabs-scrollable="false"  show-pager="false" ion-slide-tabs>
+        <ion-slide title="进货" icon-on="ion-chevron-up" icon-off="ion-chevron-up" href="#/comp/compIn">
+          <ion-nav-view name="comp-compIn">
+        </ion-slide>
+        <ion-slide title="出货" icon-on="ion-chevron-down" icon-off="ion-chevron-down" href="#/comp/compOut">
+          <ion-nav-view name="comp-compOut">
+        </ion-slide>
+        <ion-slide title="我" icon-on="ion-person" icon-off="ion-person" href="#/comp/compMe">
+          <ion-nav-view name="comp-compMe">
+        </ion-slide>
+      </ion-slide-box>
+    </ion-content>
+  </ion-view>-->
+</ion-pane>
+</body>
+</html>

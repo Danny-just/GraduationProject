@@ -1,0 +1,53 @@
+<ion-view view-title="{{title}}" >
+  <ion-content class="padding" ng-controller="RegisterController">
+    <!--<div class="scroll-content">
+          <div class="list">
+            <div class="item item-assertive item-button-right">
+              <h1 class="light">注册</h1>
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Email</span>
+             <input type="text" placeholder="me@vucek.com">
+            </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="********">
+          </label>
+        </div>
+      <div class="padding-left padding-right">
+        <button class="button button-block button-stable">Log in</button>
+      </div>
+    </div>-->
+
+    <div class="list">
+      <div class="item item-assertive item-button-right">
+        <h1 class="light">注册</h1>
+      </div>
+      <label class="item item-input">
+        <span class="input-label" >用户名</span>
+        <input ng-model="User.userName" type="text">
+      </label>
+      <label class="item item-input">
+        <span class="input-label" >电话</span>
+        <input ng-model="User.tel" type="tel">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">邮箱</span>
+        <input type="email"  ng-model="User.ema" placeholder="me@vucek.com">
+      </label>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">密码</span>
+        <input ng-model="User.passWord" type="password" placeholder="********">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">确认密码</span>
+        <input ng-model="rePassWd" type="password" placeholder="********">
+      </label>
+      <div class="padding-left padding-right">
+        <button class="button button-block button-stable" ng-click="register()" href="#/comp/">注册</button>
+      </div>
+      </div>
+    {{bool}}
+  </ion-content>
+</ion-view>

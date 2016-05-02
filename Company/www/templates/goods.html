@@ -1,0 +1,25 @@
+<ion-view view-title="出货" >
+  <ion-content class="padding" ng-controller="GoodsController">
+    <a class="button" ng-click="scanBarcode()"> ScanBarcode</a>
+    <br />
+
+    <ion-list>
+      <ion-item class="item-thumbnail"  collection-repeat="goods in Goods">
+        <!--<img ng-if="topic.pic" ng-src="{{ENV.imgUrl}}{{topic.pic}}">
+        <img ng-if="!topic.pic" ng-src="img/ionic.png">-->
+        <!--<h2><a class="text">{{goods.id+"   "}}</a>{{goods.goodsName+"|"+goods.userName+"|"+goods.goodsNumber+"|"+goods.dateTime
+          +"|"+goods.goodsPrice+"|"+goods.goodsStock+"|"+goods.goodsCompanies}}</h2>-->
+        <!--<a class="h2" ng-click="getDetail(goods)">{{goods.goodsName}}</a>-->
+      <table>
+        <tr>
+          <td>{{ goods.goodsName }}</td>&nbsp
+          <td>{{ goods.goodsNumber }}</td>
+        </tr>
+      </table>
+        <!--<p class="summary"></p>-->
+        <ion-option-button class="button-assertive icon ion-android-share"ng-click="deleteGoods(goods.id)">删除</ion-option-button>
+        <ion-option-button class="button-assertive icon ion-cube">修改</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

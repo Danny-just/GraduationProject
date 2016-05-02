@@ -1,0 +1,25 @@
+<ion-view view-title="{{title}}" >
+  <ion-content class="padding" ng-controller="MemberPostController">
+
+    <div class="list">
+      <div class="item item-assertive item-button-right">
+        <h1 class="light">添加会员</h1>
+      </div>
+      <label class="item item-input">
+        <span class="input-label" >会员名</span>
+        <input ng-model="member.memberName" type="text">
+      </label>
+      <label class="item item-input">
+        <span class="input-label" >电话</span>
+        <input ng-model="member.tel" type="tel">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">会员号</span>
+        <input type="text"  ng-model="member.memberNumber">
+      </label>
+      <div class="padding-left padding-right">
+        <button class="button button-block button-stable" ng-click="postMember()" href="#/templates/member">添加会员</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
