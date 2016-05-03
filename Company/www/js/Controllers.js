@@ -98,6 +98,7 @@ angular.module('Company.Controllers',['Company.Services'])
     $scope.title="Login";
     $scope.login=function(){
       LoginService.login($scope.mod).then(function (res){
+        console.log(res.data);
         $scope.state=res.data.state;
         if($scope.state==200){
           $window.localStorage.setItem('state','200');
