@@ -38,6 +38,11 @@ angular.module('starter', ['ionic','Company.Controllers','ngCordova'])
         abstract:true,
         templateUrl: "templates/templates.html"
     })
+      .state("index",{
+        url:"/index",
+        cache:'false',
+        templateUrl: "index.html",
+      })
       .state("templates.compIn",{
         url:"/compIn",
         views:{
@@ -82,15 +87,14 @@ angular.module('starter', ['ionic','Company.Controllers','ngCordova'])
           }
         }
       })
-      .state("templates.compRegister",{
+      .state("compRegister",{
         url:"/compRegister",
         cache:'false',
-        views:{
-          "templates-compMe":{templateUrl: "templates/compRegister.html",
+
+          templateUrl: "templates/register.html",
             controller:'RegisterController',
             service:'RegisterFactory'
-          }
-        }
+
       })
       .state("templates.member",{
         url:"/member",
@@ -148,6 +152,6 @@ angular.module('starter', ['ionic','Company.Controllers','ngCordova'])
           }
         }
       })
-    $urlRouterProvider.otherwise('/templates/compIn');
+    $urlRouterProvider.otherwise('/index');
   });
 

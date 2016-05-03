@@ -87,25 +87,52 @@ angular.module('Company.Controllers',['Company.Services'])
       });
     }
   }])
-  .controller("MeController",['$scope','$window',function($scope,$window){
+  .controller("MeController",['$scope','$window','$ionicPopup','$location',function($scope,$window,$ionicPopup,$location){
     $scope.title="我";
     /*if($window.localStorage.getItem('name')!=undefined){
       $scope.mod.User=$window.localStorage.getItem('name');
     }*/
     $scope.User=$window.localStorage.getItem('name');
+    $scope.exitUser=function () {
+      $ionicPopup.confirm({
+        title: "确认推出当前用户？",
+        /*template: "确认创建",*/
+        Text:"OK"
+      }).then(function(res){
+        console.log(res);
+        if(res==true){
+          $window.localStorage.clear();
+          console.log('1'+$window.localStorage.getItem('name'));
+          $location.path("index");
+        }else{
+
+        }
+      });
+    }
   }])
-  .controller("LoginController",['$scope','LoginService','$window',function($scope,LoginService,$window){
+  .controller("LoginController",['$scope','LoginService','$window','$state',function($scope,LoginService,$window,$state){
     $scope.title="Login";
+    if($window.localStorage.getItem("state")==200){
+      console.log("state");
+      $state.go("templates.compIn");
+    }
     $scope.login=function(){
       LoginService.login($scope.mod).then(function (res){
         console.log(res.data);
         $scope.state=res.data.state;
         if($scope.state==200){
           $window.localStorage.setItem('state','200');
+          $state.go("templates.compIn")
+          //$location.path("/templates/compIn");
         }
         console.log($scope.state);
       });
     }
+    $scope.toRegister=function () {
+      $state.go("compRegister")
+
+    }
+
   }])
   .controller("RegisterController",['$scope','RegisterService',function($scope,RegisterService){
     $scope.title="Register";
@@ -152,6 +179,7 @@ angular.module('Company.Controllers',['Company.Services'])
         }
       });
     };
+
   }])
   .controller("MemberPostController",['$scope','MemberPostService',function($scope,MemberPostService){
     $scope.title="添加会员";
