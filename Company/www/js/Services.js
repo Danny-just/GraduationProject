@@ -9,7 +9,7 @@ angular.module('Company.Services',[])
       var userName=encodeURI(encodeURI('王超'));
       var goodsName=encodeURI(encodeURI(sales.goodsName));
       var memberName=encodeURI(encodeURI(sales.memberName));
-      return $http.jsonp("http://127.0.0.1:8080/Huang/SalesHistory/PostHistory?userName=" +
+      return $http.jsonp("http://121.42.37.88:8080/Huang/SalesHistory/PostHistory?userName=" +
         userName +"&goodsName="+goodsName+"&salesNumber="+sales.salesNumber+"&memberName="+memberName+
         "&discount="+sales.discount+"&goodsPrice="+sales.goodsPrice+"&sum="+sales.sum+"&goodsNumber="+sales.goodsNumber+
         "&memberId="+sales.memberId+"&callback=JSON_CALLBACK")
@@ -27,7 +27,7 @@ angular.module('Company.Services',[])
     this.getGoods=function(userName) {
       userName = encodeURI(encodeURI(userName));
       var deferred = $q.defer();
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Goods/GetGoods?userName=" +
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Goods/GetGoods?userName=" +
         userName + "&callback=JSON_CALLBACK")
         .success(function (data, status, header, config) {
           this.data = data;
@@ -39,7 +39,7 @@ angular.module('Company.Services',[])
     }
     this.deleteGoods=function(id){
       var deferred = $q.defer();
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Goods/DeleteGoods?id=" +
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Goods/DeleteGoods?id=" +
         id + "&callback=JSON_CALLBACK")
         .success(function (data,status,header,config){
           this.data = data;
@@ -75,7 +75,7 @@ angular.module('Company.Services',[])
       var passWord=encodeURI(encodeURI(User.passWord));
       var ema=encodeURI(encodeURI(User.ema));
       console.log(User);
-      return $http.jsonp("http://192.168.0.5:8080/Huang/User/registerToAction?userName="+userName+"&passWord="+
+      return $http.jsonp("http://121.42.37.88:8080/Huang/User/registerToAction?userName="+userName+"&passWord="+
         passWord+"&tel="+User.tel+"&myEmail"+ema+"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           console.log(data);
@@ -100,7 +100,7 @@ angular.module('Company.Services',[])
       var passWord;
       userName=encodeURI(encodeURI(mod.userName));
       passWord=encodeURI(encodeURI(mod.passWord));
-      return $http.jsonp("http://127.0.0.1:8080/Huang/User/loginToAction?userName="+userName+"&passWord="+passWord
+      return $http.jsonp("http://121.42.37.88:8080/Huang/User/loginToAction?userName="+userName+"&passWord="+passWord
         +"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           this.data=data;
@@ -116,7 +116,7 @@ angular.module('Company.Services',[])
     this.getMembers=function(userName){
       var deferred = $q.defer();
       userName=encodeURI(encodeURI(userName));
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Member/getMember?userName="+userName
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/getMember?userName="+userName
         +"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           this.data=data;
@@ -129,7 +129,7 @@ angular.module('Company.Services',[])
       console.log(id);
       var deferred = $q.defer();
       id=encodeURI(encodeURI(id));
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Member/deleteMember?id="+id
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/deleteMember?id="+id
         +"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config){
           this.data=data;
@@ -155,7 +155,7 @@ angular.module('Company.Services',[])
       var memberName;
       userName=encodeURI(encodeURI(member.userName));
       memberName=encodeURI(encodeURI(member.memberName));
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Member/postMember?userName="+userName+"&memberName="+memberName
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/postMember?userName="+userName+"&memberName="+memberName
         +"&memberNumber="+member.memberNumber+"&memberTel="+member.tel+"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           this.data=data;
@@ -175,7 +175,7 @@ angular.module('Company.Services',[])
     this.getSalesHistory = function(userName){
       userName = encodeURI(encodeURI(userName));
       var defer = $q.defer();
-      return $http.jsonp("http://127.0.0.1:8080/Huang/SalesHistory/GetHistory?userName=" +
+      return $http.jsonp("http://121.42.37.88:8080/Huang/SalesHistory/GetHistory?userName=" +
         userName + "&callback=JSON_CALLBACK").success(function (data, status, header, config){
         this.data = data;
         console.log(data);
@@ -191,7 +191,7 @@ angular.module('Company.Services',[])
     this.getRejection = function(userName){
       userName = encodeURI(encodeURI(userName));
       var defer = $q.defer();
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Rejection/GetRejection?userName=" +
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Rejection/GetRejection?userName=" +
         userName + "&callback=JSON_CALLBACK").success(function(data){
         console.log(data);
         this.data = data;
@@ -208,7 +208,7 @@ angular.module('Company.Services',[])
       var userName=encodeURI(encodeURI('王超'));
       var goodsName=encodeURI(encodeURI(rejection.goodsName));
       var memberName=encodeURI(encodeURI(rejection.memberName));
-      return $http.jsonp("http://127.0.0.1:8080/Huang/Rejection/PostRejection?userName=" +
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Rejection/PostRejection?userName=" +
         userName +"&goodsName="+goodsName+"&rejectedNumber="+rejection.rejectionNumber+"&memberName="+memberName+
         "&goodsPrice="+rejection.goodsPrice+"&rejectedSum="+rejection.rejectionSum+"&goodsNumber="+rejection.goodsNumber+
         "&memberId="+rejection.memberId+"&callback=JSON_CALLBACK")
