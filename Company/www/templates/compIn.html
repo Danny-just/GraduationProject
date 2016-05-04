@@ -1,7 +1,6 @@
-<ion-view view-title="{{title}}" >
+<ion-view view-title="{{title}}">
   <ion-content class="padding" ng-controller="InController">
 
-    <a class="button" ng-click="scanBarcode()"> ScanBarcode</a>
     <br/>
    <!--
     <li ng-repeat="x in name">
@@ -14,13 +13,14 @@
       <span class="input-label">条码号</span>
       <input type="number" required ng-minlength="5" ng-maxlength="10" ng-model="sales.goodsNumber" placeholder="请输入条码号" name="goodsNumber">
       <span class="icon ion-checkmark" ng-show="MyForm.goodsNumber.$dirty && MyForm.goodsNumber.$valid"></span>
-
+      <!--<a class="button" id="rightBtn" ng-click="scanBarcode()">
+        <span class="glyphicon glyphicon-camera"></span>
+      </a>-->
       <!--<span class="icon ion-home"></span>-->
     </label>
 
     <label class="item item-input">
       <span class="input-label">商品名</span>
-
       <input type="text" ng-model="sales.goodsName" placeholder="请输入商品名" required name="goodsName">
       <span  class="glyphicon glyphicon-ok" ng-show="MyForm.goodsName.$dirty&&MyForm.goodsName.$valid"></span>
     </label>
@@ -48,15 +48,15 @@
       <span class="input-label">会员折扣</span>
       <input type="number"  ng-model="sales.discount" placeholder="请输入会员折扣" required name="discount">
       <span class="icon ion-checkmark" ng-show="MyForm.discount.$dirty&&MyForm.discount.$valid"></span>
-
     </label>
     <label class="item item-input">
       <span class="input-label">总计</span>
       <input type="number"  ng-model="sales.sum" ng-mouseover="getSum()">
     </label>
     <br/>
-    <!--函数-->
-    <input class="btn btn-primary btn-lg" type="submit" ng-click="salesGoods()" ng-disabled="MyForm.$invalid"></input>
+      <div class="pull-left pull-right">
+          <input class="btn btn-primary btn-lg active" type="submit" ng-click="salesGoods()" ng-disabled="MyForm.$invalid"></input>
+      </div>
     </form>
   </ion-content>
 </ion-view>

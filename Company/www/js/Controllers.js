@@ -121,7 +121,10 @@ angular.module('Company.Controllers',['Company.Services'])
         console.log(res.data);
         $scope.state=res.data.state;
         if($scope.state==200){
-          $window.localStorage.setItem('state','200');
+          if($scope.mod.saveUser){
+            $window.localStorage.setItem('state','200');
+          }
+
           $state.go("templates.compIn")
           //$location.path("/templates/compIn");
         }

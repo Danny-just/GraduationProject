@@ -1,10 +1,25 @@
-<ion-view view-title="{{title}}" >
+<ion-view>
   <ion-content class="padding" ng-controller="MeController">
-    <a class="button" ng-click="exitUser()">退出当前用户</a>
-    <a class="button" href="#/templates/member">会员管理</a>
-    <a class="button" href="#/templates/salesHistory">查看销售记录</a>
-    <a class="button" href="#/templates/rejection">查看退货记录</a>
-    <a class="button" href="#/templates/rejectionGoods">退货</a>
+    <div>
+    <img src="/Company/www/img/photo-run.jpeg"  alt="..." class="img-circle userImg">
+    <h3 class="helloUser">你好&nbsp {{User}}</h3>
+    </div>
+    <br>
+    <div>
+    <a class="button" ng-click="exitUser()">退出当前用户<span class="glyphicon glyphicon-off"></span></a>
+    </div>
+    <div>
+    <button href="#/templates/member" class="btn btn-info btn-lg active">会员管理</button>
+    </div>
+    <div>
+    <button class="button" href="#/templates/salesHistory">查看销售记录</button>
+    </div>
+    <div>
+    <button class="button" href="#/templates/rejection">查看退货记录</button>
+    </div>
+    <div>
+      <button class="button" href="#/templates/rejectionGoods">退货</button>
+    </div>
     <br>
     {{User}}
   </ion-content>

@@ -1,0 +1,18 @@
+#rightBtn{
+  position: absolute;
+  right: 20px;
+}
+.userImg{
+  height: 90px;
+  float:left;
+}
+.helloUser{
+  float: right;
+  margin-right: 50px;
+}
+.button{
+  width: 100%;
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
