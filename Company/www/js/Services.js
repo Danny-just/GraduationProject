@@ -51,8 +51,7 @@ angular.module('Company.Services',[])
     }
     this.getDetail=function(goods){
       console.log(goods);
-      $location.search('goods',goods);
-      $location.path("/templates/goodsDetail");
+      
       var curUrl = $location.absUrl();
       console.log(curUrl);
     }
@@ -138,13 +137,8 @@ angular.module('Company.Services',[])
           alert("error");
         });
     }
-    this.getDetail=function(member){
-      console.log(member);
-      $location.search('member',member);
-      $location.path("/templates/memberDetail");
-      var curUrl = $location.absUrl();
-      console.log(curUrl);
-    }
+   
+    
   }])
   .service('MemberPostService',['$http','$q',"$location",function($http,$q,$location){
     this.data={};

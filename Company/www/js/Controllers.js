@@ -46,7 +46,7 @@ angular.module('Company.Controllers',['Company.Services'])
     }
 
   }])
-  .controller("GoodsController",['$scope','GoodsService','$cordovaBarcodeScanner','$ionicPopup',function($scope,GoodsService,$cordovaBarcodeScanner,$ionicPopup){
+  .controller("GoodsController",['$scope','GoodsService','$cordovaBarcodeScanner','$ionicPopup','$location',function($scope,GoodsService,$cordovaBarcodeScanner,$ionicPopup,$location){
     $scope.title="出货";
     $scope.userName='王超';
     GoodsService.getGoods($scope.userName).then(function (res){
@@ -55,7 +55,11 @@ angular.module('Company.Controllers',['Company.Services'])
     },function(rej){});
 
     $scope.getDetail= function(goods){
-      GoodsService.getDetail(goods);
+      //console.log($scope.goods);
+      $location.search('goods',goods);
+      $location.path("/templates/goodsDetail");
+      /*$location.search('member',member);
+      $location.path("/templates/memberDetail");*/
     }
     $scope.deleteGoods=function(id) {
       $ionicPopup.confirm({
@@ -108,6 +112,18 @@ angular.module('Company.Controllers',['Company.Services'])
 
         }
       });
+    }
+    $scope.getMember=function () {
+      $location.path("/templates/member");
+    }
+    $scope.getHistory=function () {
+      $location.path("/templates/salesHistory");
+    }
+    $scope.getRejected= function () {
+      $location.path("/templates/rejection");
+    }
+    $scope.rejectedGoods = function () {
+      $location.path("/templates/rejectionGoods");
     }
   }])
   .controller("LoginController",['$scope','LoginService','$window','$state',function($scope,LoginService,$window,$state){
@@ -200,6 +216,7 @@ angular.module('Company.Controllers',['Company.Services'])
   }])
   .controller("GoodsDetailController",['$scope','$location',function($scope,$location){
     $scope.goods=$location.search().goods;
+    console.log($scope.goods);
   }])
   .controller("MemberDetailController",['$scope','$location',function($scope,$location){
     $scope.member=$location.search().member
