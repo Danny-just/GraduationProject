@@ -1,4 +1,4 @@
-<ion-view title="{{title}}">
+<ion-view title="{{title}}" class="bg">
   <ion-content class="padding" ng-controller="GoodsController">
 
     <br />
@@ -6,16 +6,20 @@
 
       <ion-item class="item-thumbnail item-content=50px"  collection-repeat="goods in Goods" ng-click="getDetail(goods)">
 
-        <table class="table table-striped">
+        <!--<table class="table table-striped">
         <tr>
           <td>{{ goods.goodsName }}</td>
           <td>{{ goods.goodsNumber }}</td>
         </tr>
-      </table>
+      </table>-->
+        {{goods.goodsName}}
         <ion-option-button class="button-assertive icon ion-android-share"ng-click="deleteGoods(goods.id)">删除</ion-option-button>
         <ion-option-button class="button-assertive icon ion-cube">修改</ion-option-button>
       </ion-item>
 
     </ion-list>
+    <button class="button button-block button-positive">
+      添加库存
+    </button>
   </ion-content>
 </ion-view>

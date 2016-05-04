@@ -22,7 +22,7 @@ angular.module('Company.Services',[])
         });
     }
   }])
-  .service('GoodsService',['$http','$q',"$location",function($http,$q,$location){
+  .service('GoodsService',['$http','$q',function($http,$q){
     this.data={};
     this.getGoods=function(userName) {
       userName = encodeURI(encodeURI(userName));
@@ -49,12 +49,7 @@ angular.module('Company.Services',[])
         alert("error");
       })
     }
-    this.getDetail=function(goods){
-      console.log(goods);
-      
-      var curUrl = $location.absUrl();
-      console.log(curUrl);
-    }
+
   }])
   .service('RegisterService',['$http','$q',function($http,$q){
     this.data={};
@@ -137,8 +132,8 @@ angular.module('Company.Services',[])
           alert("error");
         });
     }
-   
-    
+
+
   }])
   .service('MemberPostService',['$http','$q',"$location",function($http,$q,$location){
     this.data={};

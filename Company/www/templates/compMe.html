@@ -1,27 +1,29 @@
-<ion-view>
+<ion-view class="bg">
   <ion-content class="padding" ng-controller="MeController">
-    <div>
+    <div class="row">
     <img src="/Company/www/img/photo-run.jpeg"  alt="..." class="img-circle userImg">
     <h3 class="helloUser">你好&nbsp {{User}}</h3>
     </div>
     <br>
-    <div>
-    <a class="button" ng-click="exitUser()">退出当前用户<span class="glyphicon glyphicon-off"></span></a>
-    </div>
-    <div>
-    <button ng-click="getMember()" class="btn btn-info btn-lg active">会员管理</button>
-    </div>
-    <div>
-    <button class="button" ng-click="getHistory()" >查看销售记录</button>
-    </div>
-    <div>
-    <button class="button" ng-click="getRejected()">查看退货记录</button>
-    </div>
-    <div>
-      <button class="button" ng-click="rejectedGoods()" >退货</button>
 
+    <span>sss</span>
+
+
+    <div class="row-center">
+      <button ng-click="getMember()" class="button button-block button-positive">会员管理</button>
+    </div>
+    <div class="row-center">
+      <button class="button button-block button-positive" ng-click="getHistory()" >查看销售记录</button>
+    </div>
+    <div class="row-center">
+      <button class="button button-block button-positive" ng-click="getRejected()">查看退货记录</button>
+    </div>
+    <div class="row-center">
+      <button class="button button-block button-positive" ng-click="rejectedGoods()" >退货</button>
+    </div>
+    <div class="row-center">
+      <button class="button button-block button-positive" ng-click="exitUser()">退出当前用户<span class="glyphicon glyphicon-off"></span></button>
     </div>
     <br>
-    {{User}}
   </ion-content>
 </ion-view>

@@ -1,6 +1,6 @@
-<ion-view view-title="{{title}}" >
+<ion-view view-title="{{title}}" class="bg">
   <ion-content class="padding" ng-controller="MemberController">
-    <a class="button" href="#/templates/memberPost">插入会员</a>
+
     <ion-list>
       <ion-item class="item-thumbnail"  collection-repeat="member in members" ng-click="getDetail(member)">
         <!--<img ng-if="topic.pic" ng-src="{{ENV.imgUrl}}{{topic.pic}}">
@@ -11,5 +11,6 @@
         <ion-option-button class="button-assertive icon ion-cube">修改</ion-option-button>
       </ion-item>
     </ion-list>
+    <a class="button button-block button-positive" href="#/templates/memberPost">插入会员<span class="icon ion-log-in"></span></a>
   </ion-content>
 </ion-view>

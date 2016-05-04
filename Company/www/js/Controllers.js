@@ -3,12 +3,13 @@
  */
 angular.module('Company.Controllers',['Company.Services'])
   .controller("InController",['$scope','$cordovaBarcodeScanner','InService','$ionicPopup',function($scope,$cordovaBarcodeScanner,InService,$ionicPopup){
+
     $scope.submitForm = function(isValid) {
       if (!isValid) {
         alert('验证失败');
       }
     };
-    $scope.title='InController';
+    $scope.title='销售';
     $scope.getSum = function(){
       $scope.sales.sum=$scope.sales.goodsPrice * $scope.sales.salesNumber * $scope.sales.discount;
     }
