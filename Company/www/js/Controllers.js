@@ -48,9 +48,8 @@ angular.module('Company.Controllers',['Company.Services'])
 
   }])
   .controller("GoodsController",['$scope','GoodsService','$cordovaBarcodeScanner','$ionicPopup','$location',function($scope,GoodsService,$cordovaBarcodeScanner,$ionicPopup,$location){
-    $scope.title="出货";
-    $scope.userName='王超';
-    GoodsService.getGoods($scope.userName).then(function (res){
+    $scope.title="销售";
+    GoodsService.getGoods().then(function (res){
       console.log(res.data.goods);
       $scope.Goods=res.data.goods;
     },function(rej){});
@@ -81,15 +80,6 @@ angular.module('Company.Controllers',['Company.Services'])
           }else{
           }
         });
-    }
-
-    $scope.scanBarcode=function(){
-      $cordovaBarcodeScanner.scan().then(function (imageData) {
-        alert(imageData.text);
-        $scope.number = imageData.text;
-        alert($scope.number);
-      }, function (error) {
-      });
     }
   }])
   .controller("MeController",['$scope','$window','$ionicPopup','$location',function($scope,$window,$ionicPopup,$location){
@@ -130,14 +120,17 @@ angular.module('Company.Controllers',['Company.Services'])
   .controller("LoginController",['$scope','LoginService','$window','$state',function($scope,LoginService,$window,$state){
     $scope.title="Login";
     if($window.localStorage.getItem("state")==200){
+
       console.log("state");
       $state.go("templates.compIn");
     }
     $scope.login=function(){
       LoginService.login($scope.mod).then(function (res){
         console.log(res.data);
-        $scope.state=res.data.state;
-        if($scope.state==200){
+        $scope.token=res.data.token;
+        $window.localStorage.setItem('token',$scope.token);
+        $scope.state=200;
+        if($scope.token!=null){
           if($scope.mod.saveUser){
             $window.localStorage.setItem('state','200');
           }
@@ -154,23 +147,25 @@ angular.module('Company.Controllers',['Company.Services'])
     }
 
   }])
-  .controller("RegisterController",['$scope','RegisterService',function($scope,RegisterService){
+  .controller("RegisterController",['$scope','RegisterService','$location',function($scope,RegisterService,$location){
     $scope.title="Register";
     $scope.register=function(){
       RegisterService.register($scope.User,$scope.rePassWd).then(function(res){
         $scope.bool=res.data.registerOk;
         console.log(res.data.registerOk);
+        if($scope.bool){
+          $location.path('/index');
+        }
         alert($scope.bool);
       });
     }
   }])
   .controller("MemberController",['$scope','MemberService','$ionicPopup',function($scope,MemberService,$ionicPopup){
     $scope.title="member";
-    $scope.userName='王超';
-    MemberService.getMembers($scope.userName).then(function(response){
+
+    MemberService.getMembers().then(function(response){
       $scope.members=response.data.members;
       console.log($scope.members);})
-
     $scope.getDetail=function(member){
       MemberService.getDetail(member);
     }
@@ -218,6 +213,17 @@ angular.module('Company.Controllers',['Company.Services'])
   .controller("GoodsDetailController",['$scope','$location',function($scope,$location){
     $scope.goods=$location.search().goods;
     console.log($scope.goods);
+    $scope.scanBarcode=function(){
+      $cordovaBarcodeScanner.scan().then(function (imageData) {
+        alert(imageData.text);
+        $scope.goods.number = imageData.text;
+        alert($scope.goods.number);
+      }, function (error) {
+      });
+    }
+    $scope.insertGoods = function () {
+      
+    }
   }])
   .controller("MemberDetailController",['$scope','$location',function($scope,$location){
     $scope.member=$location.search().member

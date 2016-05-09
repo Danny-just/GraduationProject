@@ -22,13 +22,13 @@ angular.module('Company.Services',[])
         });
     }
   }])
-  .service('GoodsService',['$http','$q',function($http,$q){
+  .service('GoodsService',['$http','$q','$window',function($http,$q,$window){
     this.data={};
-    this.getGoods=function(userName) {
-      userName = encodeURI(encodeURI(userName));
+    this.getGoods=function() {
+      var token = $window.localStorage.getItem('token');
       var deferred = $q.defer();
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Goods/GetGoods?userName=" +
-        userName + "&callback=JSON_CALLBACK")
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Goods/GetGoods?token=" +
+        token + "&callback=JSON_CALLBACK")
         .success(function (data, status, header, config) {
           this.data = data;
           console.log(this.data);
@@ -49,7 +49,6 @@ angular.module('Company.Services',[])
         alert("error");
       })
     }
-
   }])
   .service('RegisterService',['$http','$q',function($http,$q){
     this.data={};
@@ -70,7 +69,7 @@ angular.module('Company.Services',[])
       var ema=encodeURI(encodeURI(User.ema));
       console.log(User);
       return $http.jsonp("http://121.42.37.88:8080/Huang/User/registerToAction?userName="+userName+"&passWord="+
-        passWord+"&tel="+User.tel+"&myEmail"+ema+"&callback=JSON_CALLBACK")
+        passWord+"&tel="+User.tel+"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           console.log(data);
           this.data=data;
@@ -88,7 +87,6 @@ angular.module('Company.Services',[])
         $window.localStorage.setItem('name',mod.userName);
         $window.localStorage.setItem('passWord',mod.passWord);
       }
-      console.log($window.localStorage.getItem('name'));
       var deferred = $q.defer();
       var userName;
       var passWord;
@@ -98,19 +96,20 @@ angular.module('Company.Services',[])
         +"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           this.data=data;
+          console.log(data);
           return $q.when(data);
         }).error(function() {
           alert("error");
         });
     }
   }])
-  .service('MemberService',['$http','$q','$location',function($http,$q,$location){
+  .service('MemberService',['$http','$q','$window',function($http,$q,$window){
     this.data={};
     console.log("sss");
-    this.getMembers=function(userName){
+    this.getMembers=function(){
       var deferred = $q.defer();
-      userName=encodeURI(encodeURI(userName));
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/getMember?userName="+userName
+      var token = $window.localStorage.getItem('token');
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/getMember?token="+token
         +"&callback=JSON_CALLBACK")
         .success(function (data,status,header,config ){
           this.data=data;

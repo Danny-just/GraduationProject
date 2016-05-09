@@ -1,0 +1,48 @@
+<ion-view view-title="{{title}}" class="bg">
+  <ion-nav-buttons side="primary">
+    <button class="button ion-ios-camera" ng-click="scanBarcode()">扫描</button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+
+    <br/>
+
+    <br/>
+    <form class="fromGoods" name="MyForm">
+    <label class="item item-input">
+      <span class="input-label">条码号</span>
+      <input type="number" required ng-minlength="5" ng-maxlength="10" ng-model="goods.number" placeholder="请输入条码号" name="goodsNumber">
+      <span class="icon ion-checkmark" ng-show="MyForm.goodsNumber.$dirty && MyForm.goodsNumber.$valid"></span>
+      <!--<a class="button" id="rightBtn" ng-click="scanBarcode()">
+        <span class="glyphicon glyphicon-camera"></span>
+      </a>-->
+      <!--<span class="icon ion-home"></span>-->
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">商品名</span>
+      <input type="text" ng-model="goods.goodsName" placeholder="请输入商品名" required name="goodsName">
+      <span  class="glyphicon glyphicon-ok" ng-show="MyForm.goodsName.$dirty&&MyForm.goodsName.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">单价</span>
+      <input type="number"  ng-model="goods.goodsPrice" placeholder="请输入商品单价" required name="goodsPrice">
+      <span class="icon ion-checkmark" ng-show="MyForm.goodsPrice.$dirty&&MyForm.goodsPrice.$valid"></span>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">库存</span>
+      <input type="number"  ng-model="goods.stock" placeholder="请输入库存数量" required name="discount">
+      <span class="icon ion-checkmark" ng-show="MyForm.discount.$dirty&&MyForm.discount.$valid"></span>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">产品公司</span>
+      <input type="number"  ng-model="goods.company" placeholder="请输入产品公司" ng-minlength="1">
+      <span class="icon ion-checkmark" ng-show="MyForm.discount.$dirty&&MyForm.discount.$valid"></span>
+    </label>
+    <br/>
+      <div class="pull-left pull-right">
+          <input class="btn btn-primary btn-lg active" type="submit" ng-click="insertGoods()" ng-disabled="MyForm.$invalid"></input>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
