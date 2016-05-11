@@ -61,19 +61,19 @@ angular.module('starter', ['ionic','Company.Controllers','ngCordova'])
       })
       .state("templates.goodsDetail",{
         url:"/goodsDetail",
-        cache:false,
+        cache:'false',
         views:{
           "templates-goods":{templateUrl: "templates/goodsDetail.html",
             controller:'GoodsDetailController'
           }
         }
       })
-      .state("template.goodsInsert",{
+      .state("templates.goodsInsert",{
         url:"/goodsInsert",
-        cache:false,
+        cache:'false',
         views:{
         "templates-goods":{templateUrl: "templates/goodsInsert.html",
-          controller:'GoodsDetailController'
+          controller:'GoodsInsertController'
         }
       }
     })

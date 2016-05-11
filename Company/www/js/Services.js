@@ -27,8 +27,8 @@ angular.module('Company.Services',[])
     this.getGoods=function() {
       var token = $window.localStorage.getItem('token');
       var deferred = $q.defer();
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Goods/GetGoods?token=" +
-        token + "&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/Goods/GetGoods?token=" +
+        token )
         .success(function (data, status, header, config) {
           this.data = data;
           console.log(this.data);
@@ -39,14 +39,34 @@ angular.module('Company.Services',[])
     }
     this.deleteGoods=function(id){
       var deferred = $q.defer();
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Goods/DeleteGoods?id=" +
-        id + "&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/Goods/DeleteGoods?id=" + id)
         .success(function (data,status,header,config){
           this.data = data;
           console.log(this.data);
           return $q.when(data);
       }).error(function(){
         alert("error");
+      })
+    }
+  }])
+  .service('GoodsInsertService',['$http','$q','$window',function ($http,$q,$window) {
+    this.data ={};
+    this.goodsInsert =function (goods) {
+      console.log(goods)
+      var goodsName = encodeURI(goods.goodsName);
+      var goodsCompany = encodeURI(goods.company);
+      console.log(goods);
+      console.log(goodsName);
+      console.log(goodsCompany);
+      var deffered = $q.defer();
+      var token = $window.localStorage.getItem('token');
+      return $http.get("http://121.42.37.88:8080/Huang/Goods/Postgoods?token="+token+"&goodsName="+goodsName+"&goodsNumber="+goods.goodsNumber
+      +"&goodsPrice="+goods.goodsPrice+"&goodsStock="+goods.stock+"&goodsCompanies="+goodsCompany)
+        .success(function (data) {
+          this.data = data;
+          return $q.when(data);
+      }).error(function () {
+        console.log("error");
       })
     }
   }])
@@ -68,8 +88,8 @@ angular.module('Company.Services',[])
       var passWord=encodeURI(encodeURI(User.passWord));
       var ema=encodeURI(encodeURI(User.ema));
       console.log(User);
-      return $http.jsonp("http://121.42.37.88:8080/Huang/User/registerToAction?userName="+userName+"&passWord="+
-        passWord+"&tel="+User.tel+"&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/User/registerToAction?userName="+userName+"&passWord="+
+        passWord+"&tel="+User.tel)
         .success(function (data,status,header,config ){
           console.log(data);
           this.data=data;
@@ -92,8 +112,7 @@ angular.module('Company.Services',[])
       var passWord;
       userName=encodeURI(encodeURI(mod.userName));
       passWord=encodeURI(encodeURI(mod.passWord));
-      return $http.jsonp("http://121.42.37.88:8080/Huang/User/loginToAction?userName="+userName+"&passWord="+passWord
-        +"&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/User/loginToAction?userName="+userName+"&passWord="+passWord)
         .success(function (data,status,header,config ){
           this.data=data;
           console.log(data);
@@ -109,10 +128,10 @@ angular.module('Company.Services',[])
     this.getMembers=function(){
       var deferred = $q.defer();
       var token = $window.localStorage.getItem('token');
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/getMember?token="+token
-        +"&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/Member/getMember?token="+token)
         .success(function (data,status,header,config ){
           this.data=data;
+          console.log(data);
           return $q.when(data);
         }).error(function() {
           alert("error");
@@ -122,8 +141,7 @@ angular.module('Company.Services',[])
       console.log(id);
       var deferred = $q.defer();
       id=encodeURI(encodeURI(id));
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/deleteMember?id="+id
-        +"&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/Member/deleteMember?id="+id)
         .success(function (data,status,header,config){
           this.data=data;
           return $q.when(data);
@@ -134,17 +152,17 @@ angular.module('Company.Services',[])
 
 
   }])
-  .service('MemberPostService',['$http','$q',"$location",function($http,$q,$location){
+  .service('MemberPostService',['$http','$q',"$location",'$window',function($http,$q,$location,$window){
     this.data={};
     console.log("jjj");
     this.postMember=function(member){
       var deferred = $q.defer();
       var userName;
       var memberName;
-      userName=encodeURI(encodeURI(member.userName));
+      var token = $window.localStorage.getItem('token');
       memberName=encodeURI(encodeURI(member.memberName));
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Member/postMember?userName="+userName+"&memberName="+memberName
-        +"&memberNumber="+member.memberNumber+"&memberTel="+member.tel+"&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/Member/postMember?token="+token+"&memberName="+memberName
+        +"&memberNumber="+member.memberNumber+"&memberTel="+member.tel)
         .success(function (data,status,header,config ){
           this.data=data;
           return $q.when(data);
@@ -158,13 +176,13 @@ angular.module('Company.Services',[])
         console.log(curUrl);
     }
   }])
-  .service('SalesHistoryService',['$http','$q',function($http,$q){
+  .service('SalesHistoryService',['$http','$q','$window',function($http,$q,$window){
     this.data={};
-    this.getSalesHistory = function(userName){
-      userName = encodeURI(encodeURI(userName));
+    this.getSalesHistory = function(){
+      var token = $window.localStorage.getItem('token');
       var defer = $q.defer();
-      return $http.jsonp("http://121.42.37.88:8080/Huang/SalesHistory/GetHistory?userName=" +
-        userName + "&callback=JSON_CALLBACK").success(function (data, status, header, config){
+      return $http.get("http://121.42.37.88:8080/Huang/SalesHistory/GetHistory?token=" +
+        token ).success(function (data, status, header, config){
         this.data = data;
         console.log(data);
         return $q.when(data);
@@ -174,13 +192,13 @@ angular.module('Company.Services',[])
 
     }
   }])
-  .service('RejectionService',['$http','$q',function($http,$q){
+  .service('RejectionService',['$http','$q','$window',function($http,$q,$window){
     this.data = {};
-    this.getRejection = function(userName){
-      userName = encodeURI(encodeURI(userName));
+    this.getRejection = function(){
+      var token = $window.localStorage.getItem('token');
       var defer = $q.defer();
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Rejection/GetRejection?userName=" +
-        userName + "&callback=JSON_CALLBACK").success(function(data){
+      return $http.jsonp("http://121.42.37.88:8080/Huang/Rejection/GetRejection?token=" + token)
+        .success(function(data){
         console.log(data);
         this.data = data;
         return $q.when(data);
@@ -189,17 +207,13 @@ angular.module('Company.Services',[])
       })
     }
   }])
-  .service('RejectionGoodsService',['$http','$q',function($http,$q){
+  .service('RejectionGoodsService',['$http','$q','$window',function($http,$q,$window){
     this.data={};
     this.rejectionGoods=function(rejection){
+      var token = $window.localStorage.getItem('token');
       var deferred = $q.defer();
-      var userName=encodeURI(encodeURI('王超'));
-      var goodsName=encodeURI(encodeURI(rejection.goodsName));
-      var memberName=encodeURI(encodeURI(rejection.memberName));
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Rejection/PostRejection?userName=" +
-        userName +"&goodsName="+goodsName+"&rejectedNumber="+rejection.rejectionNumber+"&memberName="+memberName+
-        "&goodsPrice="+rejection.goodsPrice+"&rejectedSum="+rejection.rejectionSum+"&goodsNumber="+rejection.goodsNumber+
-        "&memberId="+rejection.memberId+"&callback=JSON_CALLBACK")
+      return $http.get("http://121.42.37.88:8080/Huang/Rejection/PostRejection?token=" +
+        token +"&goodsNumber="+rejection.goodsNumber+"&memberId="+rejection.memberId)
         .success(function (data, status, header, config) {
           this.data = data;
           console.log(this.data);

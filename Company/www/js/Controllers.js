@@ -21,6 +21,7 @@ angular.module('Company.Controllers',['Company.Services'])
         Text: "OK"
       }).then(function(res){
         if(res == true){
+          console.log($scope.sales);
           InService.salesGoods($scope.sales).then(function (res){
             if(res.data.returnState=="200"){
               alert("销售成功!");
@@ -80,6 +81,12 @@ angular.module('Company.Controllers',['Company.Services'])
           }else{
           }
         });
+    }
+    $scope.postGoods = function () {
+      console.log("ss");
+      $location.path("/templates/goodsInsert");
+      var curUrl = $location.absUrl();
+      console.log(curUrl);
     }
   }])
   .controller("MeController",['$scope','$window','$ionicPopup','$location',function($scope,$window,$ionicPopup,$location){
@@ -160,14 +167,15 @@ angular.module('Company.Controllers',['Company.Services'])
       });
     }
   }])
-  .controller("MemberController",['$scope','MemberService','$ionicPopup',function($scope,MemberService,$ionicPopup){
+  .controller("MemberController",['$scope','MemberService','$ionicPopup','$location',function($scope,MemberService,$ionicPopup,$location){
     $scope.title="member";
 
     MemberService.getMembers().then(function(response){
       $scope.members=response.data.members;
       console.log($scope.members);})
     $scope.getDetail=function(member){
-      MemberService.getDetail(member);
+      $location.search('member',member);
+      $location.path("/templates/memberDetail");
     }
     $scope.confirmDelete = function(id) {
       $scope.id=id;
@@ -200,7 +208,6 @@ angular.module('Company.Controllers',['Company.Services'])
     $scope.title="添加会员";
     console.log("hhh");
     $scope.postMember=function(){
-      $scope.member.userName='王超';
       MemberPostService.postMember($scope.member).then(function (response) {
         $scope.returnState = response.data.returnState;
         if ($scope.returnState == 200) {
@@ -221,31 +228,33 @@ angular.module('Company.Controllers',['Company.Services'])
       }, function (error) {
       });
     }
+  }])
+  .controller("GoodsInsertController",['$scope','$location','GoodsInsertService',function ($scope,$location,GoodsInsertService) {
     $scope.insertGoods = function () {
-      
+      alert($scope.goods);
+      console.log($scope.goods);
+      GoodsInsertService.goodsInsert($scope.goods).then(function (response) {
+        $scope.data = response.data;
+        console.log($scope.data);
+      })
+      //$location.path("/goods");
     }
   }])
   .controller("MemberDetailController",['$scope','$location',function($scope,$location){
     $scope.member=$location.search().member
   }])
   .controller("SalesHistoryController",['$scope','SalesHistoryService',function($scope,SalesHistoryService){
-    $scope.userName='王超';
-    SalesHistoryService.getSalesHistory($scope.userName).then(function(response){
+    SalesHistoryService.getSalesHistory().then(function(response){
       $scope.histories=response.data.histories;
     })
   }])
   .controller("RejectionController",['$scope','RejectionService',function($scope,RejectionService){
-    $scope.userName='王超';
-    RejectionService.getRejection($scope.userName).then(function(response){
+    RejectionService.getRejection().then(function(response){
       $scope.goodsRejections=response.data.goodsRejections;
     })
   }])
   .controller("RejectionGoodsController",['$scope','$cordovaBarcodeScanner','RejectionGoodsService','$ionicPopup',function($scope,$cordovaBarcodeScanner,RejectionGoodsService,$ionicPopup){
     $scope.title='退货';
-    $scope.getSum = function(){
-      $scope.rejection.rejectionSum=$scope.rejection.goodsPrice * $scope.rejection.rejectionNumber;
-    }
-
 
     $scope.rejectionGoods=function(){
       $ionicPopup.confirm({
