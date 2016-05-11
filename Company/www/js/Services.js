@@ -195,9 +195,11 @@ angular.module('Company.Services',[])
   .service('RejectionService',['$http','$q','$window',function($http,$q,$window){
     this.data = {};
     this.getRejection = function(){
+      console.log("44");
       var token = $window.localStorage.getItem('token');
+      console.log(token);
       var defer = $q.defer();
-      return $http.jsonp("http://121.42.37.88:8080/Huang/Rejection/GetRejection?token=" + token)
+      return $http.get("http://121.42.37.88:8080/Huang/Rejection/GetRejection?token=" + token)
         .success(function(data){
         console.log(data);
         this.data = data;

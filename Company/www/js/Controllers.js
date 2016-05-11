@@ -236,8 +236,9 @@ angular.module('Company.Controllers',['Company.Services'])
       GoodsInsertService.goodsInsert($scope.goods).then(function (response) {
         $scope.data = response.data;
         console.log($scope.data);
+        $location.path("/goods");
       })
-      //$location.path("/goods");
+
     }
   }])
   .controller("MemberDetailController",['$scope','$location',function($scope,$location){
