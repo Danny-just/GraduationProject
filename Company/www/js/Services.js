@@ -2,17 +2,13 @@
  * Created by danny on 2015/12/5.
  */
 angular.module('Company.Services',[])
-  .service('InService',['$http','$q',function($http,$q){
+  .service('InService',['$http','$q','$window',function($http,$q,$window){
     this.data={};
     this.salesGoods=function(sales){
       var deferred = $q.defer();
-      var userName=encodeURI(encodeURI('王超'));
-      var goodsName=encodeURI(encodeURI(sales.goodsName));
-      var memberName=encodeURI(encodeURI(sales.memberName));
-      return $http.jsonp("http://121.42.37.88:8080/Huang/SalesHistory/PostHistory?userName=" +
-        userName +"&goodsName="+goodsName+"&salesNumber="+sales.salesNumber+"&memberName="+memberName+
-        "&discount="+sales.discount+"&goodsPrice="+sales.goodsPrice+"&sum="+sales.sum+"&goodsNumber="+sales.goodsNumber+
-        "&memberId="+sales.memberId+"&callback=JSON_CALLBACK")
+      var token = $window.localStorage.getItem('token');
+      return $http.get("http://121.42.37.88:8080/Huang/SalesHistory/PostHistory?token=" + token +
+        "&salesNumber="+sales.salesNumber+ "&goodsNumber="+sales.goodsNumber+ "&memberId="+ sales.memberId)
         .success(function (data, status, header, config) {
           this.data = data;
           console.log(this.data);
@@ -213,6 +209,7 @@ angular.module('Company.Services',[])
     this.data={};
     this.rejectionGoods=function(rejection){
       var token = $window.localStorage.getItem('token');
+      console.log(rejection);
       var deferred = $q.defer();
       return $http.get("http://121.42.37.88:8080/Huang/Rejection/PostRejection?token=" +
         token +"&goodsNumber="+rejection.goodsNumber+"&memberId="+rejection.memberId)
