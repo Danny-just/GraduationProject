@@ -45,6 +45,7 @@ angular.module('starter', ['ionic','Company.Controllers','ngCordova'])
       })
       .state("templates.compIn",{
         url:"/compIn",
+        cache:'false',
         views:{
           "templates-compIn":{templateUrl: "templates/compIn.html",
             controller:'InController'
@@ -53,6 +54,7 @@ angular.module('starter', ['ionic','Company.Controllers','ngCordova'])
       })
       .state("templates.goods",{
         url:"/goods",
+        cache:'false',
         views:{
           "templates-goods":{templateUrl: "templates/goods.html",
             controller:'GoodsController'
