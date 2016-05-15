@@ -1,9 +1,26 @@
-<ion-view view-title="销售记录" >
+<ion-view view-title="销售记录" class="bg">
   <ion-content class="padding" ng-controller="RejectionController">
     <ion-list>
       <ion-item class="item-thumbnail"  collection-repeat="rejection in goodsRejections">
-        {{rejection.goodsName}}
-        <span >{{rejection.dateTime}}</span>
+        <div>
+          <li>销售货物<span style="float: right">{{rejection.goodsName}}</span></li>
+        </div>
+        <div>
+          <li>会员名<span style="float: right">{{rejection.memberName}}</span></li>
+        </div>
+        <div>
+          <li>折扣<span style="float: right">{{rejection.discount}}</span></li>
+        </div>
+        <div>
+          <li>单价<span style="float: right">{{rejection.goodsPrice}}</span></li>
+        </div>
+        <div>
+          <li>总计<span style="float: right">{{rejection.sum}}</span></li>
+        </div>
+        <div>
+          <li>销售时间<span style="float: right">{{rejection.dateTime}}</span></li>
+        </div>
+
       </ion-item>
     </ion-list>
   </ion-content>
