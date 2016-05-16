@@ -33,14 +33,29 @@
     <br />-->
     <ion-list>
       <ion-item class="item-thumbnail"  collection-repeat="history in histories">
-        <!--<img ng-if="topic.pic" ng-src="{{ENV.imgUrl}}{{topic.pic}}">
-        <img ng-if="!topic.pic" ng-src="img/ionic.png">-->
-        <!--<h2><a class="text">{{goods.id+"   "}}</a>{{goods.goodsName+"|"+goods.userName+"|"+goods.goodsNumber+"|"+goods.dateTime
-          +"|"+goods.goodsPrice+"|"+goods.goodsStock+"|"+goods.goodsCompanies}}</h2>-->
-        <a class="h2">{{history.goodsName}}</a>
-        <!--<p class="summary"></p>-->
-
-
-
+        <div>
+          <li>销售货物<span style="float: right">{{history.goodsName}}</span></li>
+        </div>
+        <div>
+          <li>货物编号<span style="float: right">{{history.goodsNumber}}</span></li>
+        </div>
+        <div>
+          <li>会员编号<span style="float: right">{{history.memberId}}</span></li>
+        </div>
+        <div>
+          <li>会员名<span style="float: right">{{history.memberName}}</span></li>
+        </div>
+        <div>
+          <li>销售数量<span style="float: right">{{history.salesNumber}}</span></li>
+        </div>
+        <div>
+          <li>折扣<span style="float: right">{{history.discount}}</span></li>
+        </div>
+        <div>
+          <li>总价<span style="float: right">{{history.sum}}</span></li>
+        </div>
+        <div>
+          <li>销售时间<span style="float: right">{{history.dateTime}}</span></li>
+        </div>
   </ion-content>
 </ion-view>

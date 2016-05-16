@@ -13,5 +13,7 @@
 .bg{
   background-color: #eeeeee;
 }
-
+.angular-ion-item{
+  text-align: center;
+}
 

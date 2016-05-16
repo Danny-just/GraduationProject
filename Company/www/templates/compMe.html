@@ -1,22 +1,25 @@
-<ion-view class="bg">
-  <ion-content class="padding" ng-controller="MeController">
+<ion-view >
+  <ion-content  ng-controller="MeController" >
     <br>
     <br>
     <br>
     <div class="row">
-      &nbsp &nbsp<img src="/Company/www/img/photo-run.jpeg"  alt="..." class="img-circle userImg">
-    <h3 class="helloUser">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp你好&nbsp {{User}}&nbsp!</h3>
+      &nbsp &nbsp<img src="/Company/www/img/photo-run.jpeg" alt="..." class="img-circle userImg">
+      <h3 class="helloUser">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp你好&nbsp {{User}}&nbsp!</h3>
     </div>
     <br>
     <br>
 
 
+        <ion-item   ng-click="getMember()">会员管理</ion-item>
 
-    <ion-item ng-click="getMember()">会员管理</ion-item>
-    <ion-item ng-click="getHistory()" >查看销售记录</ion-item>
-    <ion-item ng-click="getRejected()">查看退货记录</ion-item>
-    <ion-item ng-click="rejectedGoods()" >退货</ion-item>
-    <ion-item ng-click="exitUser()">退出当前用户<span class="glyphicon glyphicon-off"></span></ion-item>
-    <br>
+        <ion-item ng-click="getHistory()">查看销售记录</ion-item>
+
+
+        <ion-item ng-click="getRejected()">查看退货记录</ion-item>
+        <ion-item ng-click="rejectedGoods()">退货</ion-item>
+        <ion-item ng-click="exitUser()">退出当前用户<span class="glyphicon glyphicon-off"></span></ion-item>
+        <br>
+
   </ion-content>
 </ion-view>

@@ -1,10 +1,10 @@
 <ion-view title="{{title}}" class="bg">
   <ion-content class="padding" ng-controller="GoodsController">
 
-    <br />
+    <br/>
     <ion-list>
 
-      <ion-item class="item-thumbnail item-content=50px"  collection-repeat="goods in Goods" ng-click="getDetail(goods)">
+      <ion-item class="item-thumbnail item-content=50px" collection-repeat="goods in Goods" ng-click="getDetail(goods)">
 
         <!--<table class="table table-striped">
         <tr>
@@ -12,8 +12,11 @@
           <td>{{ goods.goodsNumber }}</td>
         </tr>
       </table>-->
-        {{goods.goodsName}}
-        <ion-option-button class="button-assertive icon ion-android-share"ng-click="deleteGoods(goods.id)">删除</ion-option-button>
+        <div class="angular-ion-item">
+          {{goods.goodsName}}
+        </div>
+        <ion-option-button class="button-assertive icon ion-android-share" ng-click="deleteGoods(goods.id)">删除
+        </ion-option-button>
         <ion-option-button class="button-assertive icon ion-cube">修改</ion-option-button>
       </ion-item>
 

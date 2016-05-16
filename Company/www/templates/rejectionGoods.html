@@ -1,7 +1,10 @@
 <ion-view view-title="{{title}}" >
+  <ion-nav-buttons side="primary">
+    <button class="button ion-ios-camera" ng-click="scanBarcode()">扫描</button>
+  </ion-nav-buttons>
   <ion-content class="padding" ng-controller="RejectionGoodsController">
 
-    <a class="button" ng-click="scanBarcode()"> ScanBarcode</a>
+
     <br>
    <!--
     <li ng-repeat="x in name">

@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
 
 
-   <!-- <link href="lib/ionic/css/bootstrap.css" rel="stylesheet">-->
-    <link href="lib/Ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-  </head>
-  <body ng-app="starter">
-
-  <!--
-    The views will be rendered in the <ion-nav-view> directive below
-    Templates are in the /templates folder (but you could also
-    have templates inline in this html file if you'd like).
+  <!-- <link href="lib/ionic/css/bootstrap.css" rel="stylesheet">-->
+  <link href="lib/Ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
   -->
 
-  <ion-nav-bar class="bar-positive" title="title">
-    <ion-nav-back-button>
-    </ion-nav-back-button>
-  </ion-nav-bar>
-  <ion-nav-view>
-      <ion-content ng-controller="LoginController">
+</head>
+<body ng-app="starter" class="bg">
 
-        <div class="list">
-          <div class="item item-thumbnail-left item-positive">
-            <img src="img/photo-run.jpeg">
-            <h1 class="light">user login</h1>
-          </div>
-          <label class="item item-input">
-            <i class="icon ion-android-person positive"></i>
-            <input type="text" ng-model="mod.userName" placeholder="请输入您的用户名">
-          </label>
-          <label class="item item-input">
-            <i class="icon ion-ios-unlocked-outline positive"></i>
-            <input type="password"  ng-model="mod.passWord" placeholder="请输入您的密码">
-          </label>
-          <label class="item item-checkbox">
-            <label class="checkbox">
-              <input type="checkbox" checked ng-model="mod.saveUser">
-            </label>
-            记住密码
-          </label>
-        </div>
-        <div class="padding-left padding-right">
-          <button class="button button-block button-positive" ng-click="login()">登录系统</button>
-        </div>
-        <div class="padding-left padding-right">
-          <button class="button button-block button-positive" ng-click="toRegister()">注册用户</button>
-        </div>
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
 
-      </ion-content>
+<ion-nav-bar class="bar-positive" title="title">
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-nav-bar>
+<ion-nav-view>
+  <ion-content ng-controller="LoginController">
 
-  </ion-nav-view>
+    <div class="list">
+      <div class="item item-thumbnail-left item-positive">
+        <img src="img/photo-run.jpeg">
+        <h1 class="light">user login</h1>
+      </div>
+      <label class="item item-input">
+        <i class="icon ion-android-person positive"></i>
+        <input type="text" ng-model="mod.userName" placeholder="请输入您的用户名">
+      </label>
+      <label class="item item-input">
+        <i class="icon ion-ios-unlocked-outline positive"></i>
+        <input type="password" ng-model="mod.passWord" placeholder="请输入您的密码">
+      </label>
+      <label class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" checked ng-model="mod.saveUser">
+        </label>
+        记住密码
+      </label>
+    </div>
+    <div class="padding-left padding-right">
+      <button class="button button-block button-positive" ng-click="login()">登录系统</button>
+    </div>
+    <div class="padding-left padding-right">
+      <button class="button button-block button-positive" ng-click="toRegister()">注册用户</button>
+    </div>
+
+  </ion-content>
+
+</ion-nav-view>
 
 
-  </body>
-  <!-- ionic/angularjs js -->
-  <script src="lib/ionic/js/ionic.bundle.js"></script>
-  <script src="lib/ionic/js/ng-cordova.min.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/Controllers.js"></script>
-  <script src="js/Services.js"></script>
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+<!-- ionic/angularjs js -->
+<script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="lib/ionic/js/ng-cordova.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/Controllers.js"></script>
+<script src="js/Services.js"></script>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
 </html>
